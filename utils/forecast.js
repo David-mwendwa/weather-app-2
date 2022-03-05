@@ -3,14 +3,13 @@ const request = require('request');
 function forecast(latitude, longitude, callback) {
   const url = `http://api.weatherstack.com/current?access_key=${process.env.API_ACCESS_KEY}&query=${latitude},${longitude}&units=f`;
 
-  request({ url: url, json: true }, (arror, response) => {
+  request({ url: url, json: true }, (arror, { body }) => {
     if (arror) {
       callback('Unable to connect to locations server', undefined);
-    } else if (response.body.error) {
+    } else if (body.error) {
       callback('Unable to find location, Try another search', undefined);
     } else {
-      let data = response.body;
-      callback(undefined, data);
+      callback(undefined, body);
     }
   });
 }
