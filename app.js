@@ -3,13 +3,17 @@ const forecast = require('./utils/forecast');
 require('dotenv').config();
 
 // Forecast
-forecast(-1.3951197424301387, 36.76368008184649, (error, data) => {
-  console.log('Error', error);
-  console.log('Data', data);
-});
 
 // Geocoding
 geocode('Los Angeles', (error, data) => {
-  console.log('Error', error);
-  console.log('Data', data);
+  if (error) {
+    return console.log(error);
+  }
+  forecast(data.latitude, data.longitude, (error, forecastData) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log('Location', data.location);
+    console.log(forecastData);
+  });
 });
