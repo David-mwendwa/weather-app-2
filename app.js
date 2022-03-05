@@ -1,9 +1,15 @@
-const request = require('request');
-require('dotenv').config()
+const geocode = require('./utils/geocode');
+const forecast = require('./utils/forecast');
+require('dotenv').config();
 
-const url = `http://api.weatherstack.com/current?access_key=${process.env.API_ACCESS_KEY}&query=37.8267,-122.4233`;
+// Forecast
+forecast(-1.3951197424301387, 36.76368008184649, (error, data) => {
+  console.log('Error', error);
+  console.log('Data', data);
+});
 
-request({ url: url, json: true }, (error, response) => {
-  let data = response.body;
-  console.log(data.current);
+// Geocoding
+geocode('Los Angeles', (error, data) => {
+  console.log('Error', error);
+  console.log('Data', data);
 });
