@@ -2,7 +2,7 @@ const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 require('dotenv').config();
 
-geocode('Los Angeles', (error, { latitude, longitude, location } = {}) => {
+geocode('Ongata rongai', (error, { latitude, longitude, location } = {}) => {
   if (error) {
     return console.log(error);
   }
