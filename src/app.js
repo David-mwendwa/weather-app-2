@@ -4,15 +4,29 @@ const express = require('express');
 const app = express();
 const publicDirectoryPath = path.join(__dirname, '../public');
 
-app.set('view engine', 'hbs')
+app.set('view engine', 'hbs');
 app.use(express.static(publicDirectoryPath));
 
 app.get('/', (req, res) => {
-  res.send('Home');
+  res.render('index', {
+    title: 'Weather App',
+    name: 'David Mwendwa',
+  });
 });
 
 app.get('/about', (req, res) => {
-  res.send('About page');
+  res.render('about', {
+    title: 'About',
+    name: 'David Mwendwa'
+  });
+});
+
+app.get('/help', (req, res) => {
+  res.render('help', {
+    title: 'Help',
+    name: 'David Mwendwa',
+    helpText: 'Please contact us for help'
+  });
 });
 
 app.use('/weather', (req, res) => {
