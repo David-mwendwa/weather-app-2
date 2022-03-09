@@ -11,6 +11,8 @@ geocode('Ongata rongai', (error, { latitude, longitude, location } = {}) => {
       return console.log(error);
     }
     console.log('Location', location);
+    console.log('latitude', latitude);
+    console.log('longitude', longitude);
     console.log(forecastData);
   });
 });
